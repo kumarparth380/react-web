@@ -1,13 +1,17 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { themeContext } from "../App";
+import { ThemeContext } from "../context/providers/ThemeContext";
 
-let Login = () => {
+export const Login = () => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let history = useHistory();
-  let { theme, setTheme } = useContext(themeContext);
+  let { theme, setTheme } = useContext(ThemeContext);
 
+
+  let changeTheme=() => {
+    theme == "light" ? setTheme("dark") : setTheme("light");
+  }
   return (
     <div>
       <div className="row">
@@ -22,7 +26,7 @@ let Login = () => {
                 Email address
               </label>
               <input
-                className={theme}
+                // className={theme}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.currentTarget.value);
@@ -71,14 +75,10 @@ let Login = () => {
         </div>
       </div>
       <button
-        onClick={() => {
-          theme == "light" ? setTheme("dark") : setTheme("light");
-        }}
+        onClick={changeTheme}
       >
         Change Theme
       </button>
     </div>
   );
 };
-
-export default Login;

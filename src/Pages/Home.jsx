@@ -1,8 +1,12 @@
 import { useContext } from "react";
-import { themeContext } from "../App";
+import { ThemeContext } from "../context/providers/ThemeContext";
 import "./css/Home.css";
-let Home = () => {
-  let { theme, setTheme } = useContext(themeContext);
+export const Home = () => {
+  let { theme, setTheme } = useContext(ThemeContext);
+
+  let changeTheme=() => {
+    theme == "light" ? setTheme("dark") : setTheme("light");
+  }
   return (
     <div className={theme}>
       <h1 className={theme}>Home {theme}</h1>
@@ -88,9 +92,7 @@ let Home = () => {
       </p>
 
       <button
-        onClick={() => {
-          theme == "light" ? setTheme("dark") : setTheme("light");
-        }}
+        onClick={changeTheme}
       >
         Change Theme
       </button>
@@ -98,5 +100,3 @@ let Home = () => {
     </div>
   );
 };
-
-export default Home;

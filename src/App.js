@@ -1,16 +1,16 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import SignUp from "./Pages/SignUp";
+import { ThemeContext } from "./context/providers/ThemeContext";
+import { Home } from "./Pages/Home";
+import { Login } from "./Pages/Login";
+import { SignUp } from "./Pages/SignUp";
 
-export const themeContext = createContext();
 function App() {
 
   let [theme, setTheme] = useState("light");
   return (
     <BrowserRouter>
-      <themeContext.Provider value={{ theme, setTheme }}>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
         <Switch>
           <Route path="/login">
             <Login />
@@ -22,7 +22,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      </themeContext.Provider>
+      </ThemeContext.Provider>
     </BrowserRouter>
   );
 }

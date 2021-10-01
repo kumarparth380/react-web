@@ -1,29 +1,21 @@
-import { useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { ThemeContext } from "./context/providers/ThemeContext";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ThemeContextProvider } from "./context/providers/ThemeContextProvider";
 import { Home } from "./Pages/Home";
 import { Login } from "./Pages/Login";
 import { SignUp } from "./Pages/SignUp";
 
 function App() {
 
-  let [theme, setTheme] = useState("light");
   return (
-    <BrowserRouter>
-      <ThemeContext.Provider value={{ theme, setTheme }}>
+    <Router>
+      <ThemeContextProvider>
         <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/" component={Home} />
         </Switch>
-      </ThemeContext.Provider>
-    </BrowserRouter>
+      </ThemeContextProvider>
+    </Router>
   );
 }
 

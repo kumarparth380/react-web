@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { ThemeContext } from "../context/providers/ThemeContext";
+import { ThemeContext } from "../context/providers/ThemeContextProvider";
 import "./css/Home.css";
 export const Home = () => {
-  let { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
-  let changeTheme=() => {
+  const changeTheme=() => {
     theme == "light" ? setTheme("dark") : setTheme("light");
   }
   return (

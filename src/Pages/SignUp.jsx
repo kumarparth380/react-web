@@ -2,18 +2,18 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 
 export const SignUp = () => {
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let [confirmPassword, setConfirmPassword] = useState("");
-  let history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const history = useHistory();
 
-  let onSignUp=() => {
+  const onSignUp = () => {
     if (!localStorage.getItem("users")) {
       localStorage.setItem("users", JSON.stringify([]));
     }
 
-    if(password==""){
-        return;
+    if (password == "") {
+      return;
     }
 
     if (password != confirmPassword) {
@@ -26,19 +26,19 @@ export const SignUp = () => {
     a.push(obj);
     localStorage.setItem("users", JSON.stringify(a));
     history.push("/login");
-  }
+  };
 
-  let onChangeEmail=(e) => {
+  const onChangeEmail = (e) => {
     setEmail(e.currentTarget.value);
-  }
+  };
 
-  let onChangePassword=(e) => {
+  const onChangePassword = (e) => {
     setPassword(e.currentTarget.value);
-  }
+  };
 
-  let onChangeConfirmPassword=(e) => {
+  const onChangeConfirmPassword = (e) => {
     setConfirmPassword(e.currentTarget.value);
-  }
+  };
 
   return (
     <>
@@ -81,11 +81,7 @@ export const SignUp = () => {
                 id="exampleInputPassword2"
               />
             </div>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              onClick={onSignUp}
-            >
+            <button type="submit" class="btn btn-primary" onClick={onSignUp}>
               Sign Up!
             </button>
           </form>
@@ -94,4 +90,3 @@ export const SignUp = () => {
     </>
   );
 };
-

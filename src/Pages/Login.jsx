@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { ThemeContext } from "../context/providers/ThemeContext";
+import { ThemeContext } from "../context/providers/ThemeContextProvider";
 
 export const Login = () => {
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let history = useHistory();
-  let { theme, setTheme } = useContext(ThemeContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+  const { theme, setTheme } = useContext(ThemeContext);
 
 
-  let changeTheme=() => {
+  const changeTheme=() => {
     theme == "light" ? setTheme("dark") : setTheme("light");
   }
   return (

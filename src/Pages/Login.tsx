@@ -1,18 +1,21 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { ThemeContext } from "../context/providers/ThemeContextProvider";
+import {
+  GlobalThemeType,
+  ThemeContext,
+} from "../context/providers/ThemeContextProvider";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const history = useHistory();
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext<GlobalThemeType>(ThemeContext);
 
   const changeTheme = () => {
     theme == "light" ? setTheme("dark") : setTheme("light");
   };
 
-  const onLogin=(e : React.MouseEvent<HTMLElement>) => {
+  const onLogin = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
     if (email == "" || password == "") {
@@ -25,24 +28,24 @@ export const Login = () => {
       password: string;
     }
 
-    let user : User={email : "sgasgasg", password : "gsagu sjbfk"};
+    let user: User = { email: "sgasgasg", password: "gsagu sjbfk" };
 
     for (let i = 0; i < a.length; i++) {
       if (a[i].email == email) {
-        user= { email: a[i].email, password: a[i].password };
+        user = { email: a[i].email, password: a[i].password };
         break;
       }
     }
     user.email == email && user.password == password
       ? history.push("/home")
       : alert("Email or password are incorrect");
-  }
+  };
   return (
     <div>
       <div className="row">
         <div className="col-4">
           <form className="m-4">
-            <div className ="mb-3">
+            <div className="mb-3">
               <label
                 className="form-label"
                 // className={theme}
@@ -78,11 +81,7 @@ export const Login = () => {
                 id="exampleInputPassword1"
               />
             </div>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={onLogin}
-            >
+            <button type="submit" className="btn btn-primary" onClick={onLogin}>
               Login
             </button>
 

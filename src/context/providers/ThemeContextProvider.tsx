@@ -1,11 +1,11 @@
 import { createContext, useState } from "react";
 
-export type GlobalTheme = {
+export type GlobalThemeType = {
     theme: string
     setTheme:(c: string) => void
 }
 
-export const ThemeContext = createContext<GlobalTheme>({
+export const ThemeContext = createContext<GlobalThemeType>({
     theme : "light", 
     setTheme: ()=>{},
 });
@@ -16,7 +16,7 @@ type Props = {
 
 export const ThemeContextProvider = ({children} : Props) => {
 
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState<string>("light");
     
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>

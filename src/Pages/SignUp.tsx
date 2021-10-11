@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 
 export const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const history = useHistory();
 
   const onSignUp = (e : React.MouseEvent<HTMLElement>) => {

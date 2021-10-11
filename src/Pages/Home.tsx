@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ThemeContext } from "../context/providers/ThemeContextProvider";
+import { GlobalThemeType, ThemeContext } from "../context/providers/ThemeContextProvider";
 import "./css/Home.css";
-export const Home = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+export const Home : React.FC<any> = () => {
+  const { theme, setTheme } = useContext<GlobalThemeType>(ThemeContext);
 
   const changeTheme=() => {
     theme == "light" ? setTheme("dark") : setTheme("light");
@@ -68,7 +68,7 @@ export const Home = () => {
         obcaecati qui nisi officiis, error reiciendis quia suscipit illo
         assumenda exercitationem! Impedit eius aspernatur omnis voluptatum, ab
         eaque, nisi hic unde distinctio eligendi, soluta sint voluptates
-        architecto eveniet fuga at minus provident! Pariatur quasi deserunt sit
+        architecto eveniet fuga at minus provident! Pariatur quasi desesfdrunt sit
         ab deleniti cupiditate eum facilis aliquid ullam. Dolorem dolores,
         eveniet molestiae velit, earum tempore sequi veniam aspernatur maiores
         temporibus pariatur amet suscipit minus inventore voluptates. Veniam

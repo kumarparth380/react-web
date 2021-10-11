@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GlobalThemeType, ThemeContext } from "../context/providers/ThemeContextProvider";
 import "./css/Home.css";
-export const Home = () => {
+export const Home : React.FC<any> = () => {
   const { theme, setTheme } = useContext<GlobalThemeType>(ThemeContext);
 
   const changeTheme=() => {

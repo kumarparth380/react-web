@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-export const SignUp = () => {
+export const SignUp: React.FC<any> = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const history = useHistory();
 
-  const onSignUp = (e : React.MouseEvent<HTMLElement>) => {
+  const onSignUp = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (!localStorage.getItem("users")) {
       localStorage.setItem("users", JSON.stringify([]));
@@ -22,22 +22,22 @@ export const SignUp = () => {
       return;
     }
 
-    let a = JSON.parse(localStorage.getItem("users")|| "");
+    let a = JSON.parse(localStorage.getItem("users") || "");
     let obj = { email, password };
     a.push(obj);
     localStorage.setItem("users", JSON.stringify(a));
     history.push("/login");
   };
 
-  const onChangeEmail = (e:React.FormEvent<HTMLInputElement>) => {
+  const onChangeEmail = (e: React.FormEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value);
   };
 
-  const onChangePassword = (e:React.FormEvent<HTMLInputElement>) => {
+  const onChangePassword = (e: React.FormEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
   };
 
-  const onChangeConfirmPassword = (e:React.FormEvent<HTMLInputElement>) => {
+  const onChangeConfirmPassword = (e: React.FormEvent<HTMLInputElement>) => {
     setConfirmPassword(e.currentTarget.value);
   };
 
@@ -47,9 +47,7 @@ export const SignUp = () => {
         <div className="col-4">
           <form className="m-4">
             <div className="mb-3">
-              <label className="form-label">
-                Email address
-              </label>
+              <label className="form-label">Email address</label>
               <input
                 value={email}
                 onChange={onChangeEmail}
@@ -59,9 +57,7 @@ export const SignUp = () => {
               />
             </div>
             <div className="mb-3">
-              <label className="form-label">
-                Password
-              </label>
+              <label className="form-label">Password</label>
               <input
                 value={password}
                 onChange={onChangePassword}
@@ -71,9 +67,7 @@ export const SignUp = () => {
               />
             </div>
             <div className="mb-3">
-              <label className="form-label">
-                Confirm Password
-              </label>
+              <label className="form-label">Confirm Password</label>
               <input
                 value={confirmPassword}
                 onChange={onChangeConfirmPassword}
@@ -82,7 +76,11 @@ export const SignUp = () => {
                 id="exampleInputPassword2"
               />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={onSignUp}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={onSignUp}
+            >
               Sign Up!
             </button>
           </form>

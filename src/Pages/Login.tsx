@@ -5,7 +5,7 @@ import {
   ThemeContext,
 } from "../context/providers/ThemeContextProvider";
 
-export const Login = () => {
+export const Login: React.FC<any> = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const history = useHistory();

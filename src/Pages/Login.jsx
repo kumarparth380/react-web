@@ -8,9 +8,27 @@ export const Login = () => {
   const history = useHistory();
   const { theme, setTheme } = useContext(ThemeContext);
 
-
-  const changeTheme=() => {
+  const changeTheme = () => {
     theme == "light" ? setTheme("dark") : setTheme("light");
+  };
+
+  const onLogin=(e) => {
+    e.preventDefault();
+
+    if (email == "" || password == "") {
+      return;
+    }
+    let a = JSON.parse(localStorage.getItem("users"));
+    let b = {};
+    for (let i = 0; i < a.length; i++) {
+      if (a[i].email == email) {
+        b = { email: a[i].email, password: a[i].password };
+        break;
+      }
+    }
+    b.email == email && b.password == password
+      ? history.push("/home")
+      : alert("Email or password are incorrect");
   }
   return (
     <div>
@@ -55,8 +73,11 @@ export const Login = () => {
                 id="exampleInputPassword1"
               />
             </div>
-
-            <button type="submit" class="btn btn-primary">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              onClick={onLogin}
+            >
               Login
             </button>
 
@@ -74,11 +95,11 @@ export const Login = () => {
           </form>
         </div>
       </div>
-      <button
+      {/* <button
         onClick={changeTheme}
       >
         Change Theme
-      </button>
+      </button> */}
     </div>
   );
 };
